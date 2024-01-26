@@ -19,13 +19,14 @@ const workerURL = URL.createObjectURL(workerBlob);
 const worker = new Worker(workerURL);
 
 // 获取 client_secret,client_id 开放平台【https://ai.data-baker.com/】语音合成 -> 短文本合成 -> 授权管理
-const client_secret = '';
+const client_secret = '';    // 采用 短语音合成 或 定制声音的 密钥
 const client_id = '';
 
 function getWebsocketUrl() {
   return new Promise((resolve, rejected) => {
-    let wsUrl = 'wss://openapi.data-baker.com/tts/wsapi';
-    let tokenUrl = "https://openapi.data-baker.com/oauth/2.0/token";
+	// let wsUrl = 'wss://openapi.data-baker.com/tts/wsapi';               // 短语音合成的 api
+    let wsUrl = 'wss://openapi.data-baker.com/tts_personal/wsapi';      // 声音复刻-长文本 语音合成的 api
+    let tokenUrl = "https://openapi.data-baker.com/oauth/2.0/token";    
     let url = `${tokenUrl}?grant_type=client_credentials&client_secret=${client_secret}&client_id=${client_id}`;
     request({
       url: url,

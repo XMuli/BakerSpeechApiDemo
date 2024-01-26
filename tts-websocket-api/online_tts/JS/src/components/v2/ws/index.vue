@@ -143,7 +143,7 @@ export default {
       rules: {
         voice_name: [
           {required: true, message: "请填写发音人名称", trigger: "blur"},
-          {min: 1, max: 30, message: "长度在1至30个字", trigger: "blur"}
+          {min: 1, max: 100, message: "长度在1至30个字", trigger: "blur"}
         ],
         text: [
           {required: true, message: "请填写需要合成的文字", trigger: "blur"},
